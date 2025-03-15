@@ -1,16 +1,30 @@
-# app_entrada_de_dados
+# O que eu aprendi na criação do meu 4° APP?
+Nessa aplicação o principal estudo foi a entrada de dados via texto
 
-A new Flutter project.
+# TextField()
+o TextField serve para receber os dados fornecidos pelo usuario, ele é acompanhado por mais algumas coisas:
 
-## Getting Started
+`  keyboardType: TextInputType.number ` define o tipo de dado que sera digitado, number, text...
 
-This project is a starting point for a Flutter application.
+` decoration: InputDecoration(labelText: "digite um valor")` define a label.
 
-A few resources to get you started if this is your first Flutter project:
+` style: TextStyle(fontSize: 30, color: Colors.green)` é acompanhado tbm do style.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+`onSubmitted: (String texto)`
+`{print("valor digitado:" + texto);},` Quando for submetido exibe o valor digitado.
+` controller: _textEditingController` Principal responsavel por fazer a ligação entre o textfield e o botão ou algo que va entregar o dados para algum lugar.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Controller
+`TextEditingController _textEditingController = TextEditingController();` Definido acima do @override
+` print("valor digitado:" + _textEditingController.text)` Definino dentro do botão OnPressed, exibe o valor digitado.text
+
+# Função CalcularMelhorOpcao() 
+` double? alcool = double.tryParse(_alcool.text);
+  double? gasolina = double.tryParse(_gasolina.text);` Aqui o `double?` aceita valores nulos para gasolina e alcool e o `tryParse` tenta converter esses valores em texto para double
+
+`    if (alcool == null || gasolina == null || gasolina == 0) {
+       setState(() {
+         melhorOpcao = "Digite valores válidos!";
+       });
+       return;
+     }` Faz a verificação se os dados forem nulos. 
